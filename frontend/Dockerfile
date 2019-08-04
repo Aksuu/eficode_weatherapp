@@ -1,21 +1,11 @@
-# Use an official Python runtime as a parent image
-FROM python:2.7-slim
 
-# Set the working directory to /app
-WORKDIR /app
+FROM node:10.1.0
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+WORKDIR /user/projects
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+COPY . /user/projects
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+RUN npm i
 
-# Define environment variable
-ENV NAME World
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["npm", "start"]
 
