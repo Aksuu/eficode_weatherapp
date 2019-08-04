@@ -1,0 +1,17 @@
+version: '3'
+services:
+  weatherapp_backend:
+    build:
+      context: ./backend
+    image: weatherapp_backend
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./backend:user/projects
+  weatherapp_frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./frontend/user/projects
